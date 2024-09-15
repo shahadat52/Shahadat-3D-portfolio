@@ -25,7 +25,7 @@ const Hero = () => {
           <div
             onMouseEnter={() => setshow(true)}
             onMouseLeave={() => setshow(false)}
-            className="relative  "
+            className="relative"
           >
             <h1 className="text-xl mt-[-20px] pl-3 relative z-50 font-semibold  gradient-text bg-gradient-to-r from-blue-700 via-pink-500 to-pink-500 text-transparent bg-clip-text">
               {" "}
@@ -36,6 +36,17 @@ const Hero = () => {
                 } hover:w-32 z-40  bg-gradient-to-r from-blue-100 via-pink-100 to-pink-200   top-0 left-0`}
             ></div>
           </div>
+
+          <div className="mt-5" >
+            <a href="/shahadat_resume.pdf" download>
+              <h1 className="pl-3  font-semibold border rounded-xl border-pink-300  gradient-text bg-gradient-to-r from-blue-700 via-pink-500 to-pink-500 text-transparent bg-clip-text"
+
+              >
+                Download Resume
+              </h1>
+            </a>
+          </div>
+
         </motion.div>
 
         <motion.div
