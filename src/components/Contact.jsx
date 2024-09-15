@@ -1,9 +1,9 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useRef, useState } from "react";
 import SectionWrapper from "../hoc/SectionWrapper";
 import { motion } from "framer-motion";
 import { slideIn } from "../Utilities/motion ";
 import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
 import emailjs from "@emailjs/browser";
 
 
@@ -29,38 +29,31 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
-    emailjs.send(
-      'service_c1gls4p',
-      'template_li8004i',
-      {
-        from_name: form.name,
-        to_name: "Shahadat Hossain",
-        from_email: form.email,
-        to_email: "shahadathossain.sh255@gmail.com",
-        message: form.message,
-      },
-      'yDKG1P_4gE_6ARh5o'
-
-    )
+    // Send email using EmailJS
+    emailjs
+      .send(
+        "service_c1gls4p",
+        "template_li8004i",
+        {
+          name: form?.name,
+          email: form?.email,
+          subject: "I would like to contract with you",
+          message: form?.message,
+        },
+        "yDKG1P_4gE_6ARh5o"
+      )
       .then(
-        () => {
+        (response) => {
+          console.log("Email sent successfully!", response.status, response.text);
           setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
+          alert("Email sent successfully!");
         },
         (error) => {
+          console.error("Failed to send email", error);
           setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
+          alert("Failed to send email");
         }
-      )
+      );
   };
   return (
     <div className={`xl:mt-12 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 bg-tertiary xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
@@ -70,30 +63,30 @@ const Contact = () => {
         className="p-8 rounded-2xl text-gray-300 grid justify-center items-center "
       >
         <div>
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <div className="relative  text-gray-500 my-4 py-2 ">
-          <div className="absolute">
-            <p className="text-xs">
-              {" "}
-              <span>{"<"}</span> h1 <span>{">"}</span>{" "}
-            </p>
-            <div className="h-16 w-[1px] left-1 top-0 bg-gray-600"></div>
-            <p className="text-xs">
-              <span>{"<"}</span> h1 <span>{"/>"}</span>
-            </p>
-          </div>
+          <p className={styles.sectionSubText}>Get in touch</p>
+          <div className="relative  text-gray-500 my-4 py-2 ">
+            <div className="absolute">
+              <p className="text-xs">
+                {" "}
+                <span>{"<"}</span> h1 <span>{">"}</span>{" "}
+              </p>
+              <div className="h-16 w-[1px] left-1 top-0 bg-gray-600"></div>
+              <p className="text-xs">
+                <span>{"<"}</span> h1 <span>{"/>"}</span>
+              </p>
+            </div>
 
-          <div className="p-3">
-            <h2 className="bg-clip-text text-6xl font-bold  text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-              Contact.
-            </h2>
+            <div className="p-3">
+              <h2 className="bg-clip-text text-6xl font-bold  text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+                Contact.
+              </h2>
+            </div>
           </div>
-        </div>
-        <p className="w-full ">
-          Feel free to send me any message about me or wanna hire me or need any
-          help in your project. I will reply you as soon as possible. Please
-          enter a valid emal so that I can contact you.{" "}
-        </p>
+          <p className="w-full ">
+            Feel free to send me any message about me or wanna hire me or need any
+            help in your project. I will reply you as soon as possible. Please
+            enter a valid emal so that I can contact you.{" "}
+          </p>
         </div>
       </motion.div>
       <motion.div
