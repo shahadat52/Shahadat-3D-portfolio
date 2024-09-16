@@ -9,10 +9,10 @@ const Hero = () => {
   const [show, setshow] = useState(false);
   return (
     <section className="mt-[-60px]">
-      <div className={`xl:mt-12 grid lg:grid-cols-2  gap-10 max-h-screen overflow-hidden text-white`}>
+      <div className={`xl:mt-12 grid lg:grid-cols-2  gap-10 max-h-screen overflow-hidden text-white `}>
         <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
-          className='flex-[0.75]  mx-auto  p-8 mt-14 rounded-2xl '
+          className='flex-[0.75] p-8 mt-14 rounded-2xl mx-auto '
         >
 
           <h2 className=''>
@@ -37,10 +37,9 @@ const Hero = () => {
             ></div>
           </div>
 
-          <div className="mt-5" >
+          <div className="mt-5 hover:bg-gray-800 hover:rounded-xl"  >
             <a href="/shahadat_resume.pdf" download>
-              <h1 className="pl-3  font-semibold border rounded-xl border-pink-300  gradient-text bg-gradient-to-r from-blue-700 via-pink-500 to-pink-500 text-transparent bg-clip-text"
-
+              <h1 className="text-center font-semibold border rounded-xl border-pink-300  gradient-text bg-gradient-to-r from-blue-700 via-pink-500 to-pink-500 text-transparent bg-clip-text"
               >
                 Download Resume
               </h1>
@@ -51,7 +50,7 @@ const Hero = () => {
 
         <motion.div
           variants={slideIn("right", "tween", 0.2, 1)}
-          className=' xl:flex-1  mt-[-60px] lg:mr-[-200px] md:h-[550px] h-[380px]'
+          className=' xl:flex-1  mt-[-60px] lg:mr-[-200px] md:h-[550px] h-[380px] hidden lg:flex'
         >
           <EarthCanvas />
         </motion.div>
